@@ -726,7 +726,7 @@ void read_config(char *cfgpath, struct access_config *config_ptr)
 		err(1, "open(\"%s\") failed", cfgpath);
 	if (fstat(f, &sb))
 		err(1, "fstat() for config file (%s) failed", cfgpath);
-	cfgstr = (char *)malloc(sb.st_size * sizeof(char));
+	cfgstr = (char *)calloc(sb.st_size, sizeof(char));
 	readall(f, cfgstr, sb.st_size);
 	close(f);
 
